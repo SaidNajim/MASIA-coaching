@@ -56,4 +56,15 @@ def search(request):
         "page_title": "Trouver un coach",
         "page_id": 5,
     }
-    return render(request, "pages/index.html", context)
+    return render(request, "masia/index.html", context)
+
+
+def send_rfq(request, id):
+    try:
+        entrepreneur = Entrepreneur.objects.get(id=id)
+        context = {
+            "entrepreneurs": entrepreneur,
+        }
+        return render(request, "masia/coach.html", context)
+    except:
+        print("EXCEPTION: ", traceback.format_exc())
