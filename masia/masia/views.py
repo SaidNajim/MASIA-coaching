@@ -62,8 +62,9 @@ def search(request):
 def send_rfq(request, id):
     try:
         entrepreneur = Entrepreneur.objects.get(id=id)
+        print(entrepreneur)
         context = {
-            "entrepreneurs": entrepreneur,
+            "e": entrepreneur,
         }
         return render(request, "masia/coach.html", context)
     except:

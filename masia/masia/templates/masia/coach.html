@@ -2,5 +2,94 @@
 {% load static %}
 
 {% block content %}
+<div class="container my-5">
+    <!-- Header Section with Image and Text Side-by-Side on Larger Screens, Centered on Smaller Screens -->
+    <div class="header py-5 px-3 text-white" style="background: linear-gradient(to right, #ff69b4, #00cfe5); border-radius: 10px;">
+      <div class="row align-items-center">
+          <!-- Image Section -->
+          <div class="col-md-3 col-12 text-center mb-3 mb-md-0">
+              <img src="{{ e.photo.url }}" alt="Coach Image" class="rounded-circle border border-white" style="width: 150px; height: 150px;">
+          </div>
+          <!-- Text Section -->
+          <div class="col-md-9 col-12 text-center text-md-left">
+              <h2>{{ e.user.first_name }} {{ e.user.last_name }}</h2>
+              <p>{{ e.tagline }}</p>
+              <div class="star-rating" style="font-size: 24px; color: gold;">
+                ★★★★★
+            </div>           
+              <button class="btn mt-3" style="background-color: #ff69b4; color: white;" onclick="scrollToSection()">Séance découverte ?</button>
+          </div>
+      </div>
+  </div>
 
-{% endblock %}
+    <!-- Main Profile Section -->
+    <div class="mt-4">
+        <h3 class="text-center">{{ e.user.first_name }} est le coach de sport adapté à Vous</h3>
+        <p class="text-center">Coaching &gt; Prise de poids &gt; Niveau débutant</p>
+
+        <!-- Coach Introduction -->
+        <div class="mt-4">
+            <h4>Le mot du coach</h4>
+            <p>
+                Hey salut à toi, moi c’est Yacine coach de sport adapté et j’ai 24 ans ! Ça te dit que je devienne ton coach à Gonesse, sur Paris et leurs environs, que ce soit en extérieur ou à domicile ? Te tracasses pas pour le lieu, l’organisation, la motivation ainsi que la communication sont les clés de la réussite !!
+            </p>
+            <p>
+                <strong>Mon Parcours, Mes Expériences :</strong><br>
+                Enseignant en Activités Physiques Adaptées et Santé au sein d’un service Hôpital de Jour en Centre de rééducation et de réathlétisation depuis 2 ans et coach sportif indépendant depuis plus d’un an...
+            </p>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="experience-section mt-4 p-4" style="background-color: #f9f9f9;">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <i class="fa fa-briefcase" style="font-size: 32px; color: #ff69b4;"></i> <!-- Experience icon -->
+                </div>
+                <div class="col-md-10">
+                    <h5>Expérience pro</h5>
+                    <ul>
+                        <li>Enseignant en activité physique adaptée et santé en service Hôpital de Jour</li>
+                        <li>Réadaptation/rééducation polypathologies + réadaptation en service pneumologie réadaptation respiratoire</li>
+                        <li>Leader d’un projet de stimulation cognitivo-motrice auprès de public avec déficiences psychomotrices</li>
+                        <li>Enseignant en APA au sein...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- New Sports Training Section (Formation sportive) -->
+        <div class="formation-section mt-4 p-4" style="background-color: #f9f9f9; border-radius: 10px;">
+          <div class="row">
+              <div class="col-12 col-md-2 text-center mb-3 mb-md-0">
+                  <i class="fa fa-graduation-cap" style="font-size: 32px; color: #00cfe5;"></i> <!-- Training icon -->
+              </div>
+              <div class="col-12 col-md-10">
+                  <h5>Formation sportive</h5>
+                  <ul style="padding-left: 20px;">
+                      <li>Diplôme de Licence STAPS (Science technique des activités physiques et sportives)</li>
+                      <li>Spécialisation en APA-S (Activités Physiques Adaptées et Santé) à l’Université de Paris</li>
+                      <li>Certifications en réadaptation respiratoire pour les patients atteints de BPCO et/ou d’emphysème</li>
+                      <li>Formation continue en méthodologies d’intervention auprès des publics à besoins spécifiques</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+<script>
+  function scrollToSection() {
+    const targetSection = document.getElementById('coachin-form');
+    
+    // Calculate the position of the target section and apply an offset
+    const targetPosition = targetSection.offsetTop;
+    const offset = -100; // Change this value to scroll more or less
+
+    // Scroll to the target section position, with the offset applied
+    window.scrollTo({
+      top: targetPosition + offset,
+      behavior: 'smooth' // Smooth scrolling
+    });
+  }
+</script>
+
+{% include 'masia/includes/coaching_form.html' %}
+{% endblock content %}
