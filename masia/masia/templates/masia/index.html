@@ -1,0 +1,127 @@
+{% extends 'masia/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <form method="GET" action="{% url 'search' %}">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <div class="row">
+                <div class="col-6">
+                  <input class="form-control" name="fname_kw" id="search_fname" placeholder="Prénom" />
+                </div>
+                <div class="col-6">
+                  <input class="form-control" name="lname_kw" id="search_lname" placeholder="Nom" />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <select class="form-control" name="skill_kw" id="search_activity">
+                  <option value="" disabled selected>Compétence</option>
+                {% for s in skills %}
+                  <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <select class="form-control" name="city_kw" id="search_city" placeholder="test" >
+                <option value="" disabled selected>Ville</option>
+                {% for c in cities %}
+                  <option value="{{ c }}">{{ c.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-success" style="width:100%;" type="submit">Rechercher</button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-danger" style="width:100%;" href="/">Réinitialiser</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section><!-- End Breadcrumbs -->
+<!-- ======= Team Section ======= -->
+{% include 'masia/includes/messages.html' %}
+<section id="team" class="team ">
+  <div class="container">
+    <div class="row">
+      {% if entrepreneurs %}
+      {% for e in entrepreneurs %}
+      <div class="col-lg-4">
+        <div class="member d-flex align-items-start">
+          <div class="pic">
+            <img src="{{ e.photo.url }}" class="img-fluid" alt="">
+            <div class="text-center p-2">
+              {% comment %} <button class="btn btn-sm btn-secondary mt-2 open-phoneModal" data-toggle="modal" href="#phoneModal"><i class="ri-phone-line"></i></button> {% endcomment %}
+              <i class="fa fa-heart" style="color:#CF0A0A;"></i> {% if e.avg_rating %}({{ e.avg_rating }}){% else %}Aucun avis{% endif %}
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>{{ e.user.first_name }} {{ e.user.last_name }} {% if e.package != "Gratuit" %} <i class="ri-award-fill" style="color:#f79418;" data-toggle="tooltip" data-placement="top" title="{% if e.package %}Membre {{ e.package }}{% endif %}"></i> {% endif %}</h4>
+            <span>{% if e.tagline %}{{ e.tagline }}{% else %} Auto Entrepreneur {% endif %}</span>
+            <a href="{% url 'send_rfq' e.id %}" class="btn btn-success" style="width:100%;">Demander un devis</a>
+            <div class="social">
+                <div class="mr-3"><i class="ri-mail-send-line"></i> {{ e.rfq }} demandes de devis</div>
+            </div>
+            <div class="social">
+                <div class="mr-3"><i class="ri-eye-line"></i> {{ e.views }} visites de profil</div>
+            </div>
+            <div class="social">
+                <div class="mr-3"><i class="ri-briefcase-line"></i> {{ e.projects }} projets réalisés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      Aucun auto-entrepreneur trouvé. Veuillez raffiner votre recherche
+      {% endif %}
+    </div>
+
+  </div>
+</section><!-- End Team Section -->
+
+  </main><!-- End #main -->
+
+<!-- Phone Call Modal -->
+{% comment %} <div class="modal fade" id="phoneModal" tabindex="-1" role="dialog" aria-labelledby="phoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Appeler l'auto entrepreneur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="{% url 'call_request' %}">
+        {% csrf_token %}
+      <div class="modal-body">
+        <div class="col-12 mb-2">
+          <input type="hidden" name="cr_entrepreneur_id_kw" id="callEntreId"/>
+          
+          <input class="form-control" name="cr_name_kw" id="rfq_name_id" placeholder="Nom complet" required/>
+        </div>
+        <div class="col-12 mb-2">
+          <input class="form-control" name="cr_phone_kw" id="rfq_name_id" placeholder="Téléphone" required/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-success">Récupérer le numéro de téléphone</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+
+      {% endblock content %}
