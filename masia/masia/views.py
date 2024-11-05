@@ -15,7 +15,7 @@ def index(request):
         "entrepreneurs": entrepreneurs,
         "skills": skills,
         "cities": ["Temara", "Salé"],
-        "page_title": "Trouver un Auto Entrepreneur",
+        "page_title": "Trouver un coach",
         "page_id": 5,
     }
     return render(request, "masia/index.html", context)
@@ -53,7 +53,7 @@ def search(request):
         "activities": Activity.objects.all(),
         "cities": City.objects.all(),
         "filters": html_queries,
-        "page_title": "Trouver un Auto Entrepreneur",
+        "page_title": "Trouver un coach",
         "page_id": 5,
     }
     return render(request, "pages/index.html", context)
