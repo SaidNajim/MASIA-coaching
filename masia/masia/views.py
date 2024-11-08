@@ -65,7 +65,14 @@ def send_rfq(request, id):
         print(entrepreneur)
         context = {
             "e": entrepreneur,
+            "page_title": "Profil coach",
         }
         return render(request, "masia/coach.html", context)
     except:
         print("EXCEPTION: ", traceback.format_exc())
+
+def apply(request):
+    context = {
+        "page_title": "Devenir Coach",
+    }
+    return render(request, "masia/apply.html")

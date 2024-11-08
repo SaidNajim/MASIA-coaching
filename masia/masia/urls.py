@@ -25,6 +25,7 @@ urlpatterns = [
     path("", views.index, name="pages_index"),
     path("coach/<id>", views.send_rfq, name="coach"),
     path("s", views.search, name="search"),
+    path("candidater", views.apply, name="candidater"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

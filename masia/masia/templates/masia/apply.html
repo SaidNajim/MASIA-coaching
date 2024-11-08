@@ -1,0 +1,52 @@
+{% extends 'masia/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 id="coachin-form" class="text-center mt-5 mb-3">Formulaire de Coaching Personnalisé</h1>
+  <p class="text-center">Franchissez le pas et rejoignez-nous pour découvrir l’éventail de clients qui vous correspond.
+  </p>
+    <form class="">
+      <!-- Existing sections as provided by you -->
+      
+      <!-- Additional Section: Contact Coach -->
+      <fieldset class="border p-3 mb-4">
+          <div class="row">
+              <div class="col-md-6 mb-3">
+                  <label for="coach-email" class="form-label">Email *</label>
+                  <input type="email" id="coach-email" name="coach-email" class="form-control" required>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-12 mb-3">
+                  <label for="message" class="form-label">Présentez vous *</label>
+                  <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+              </div>
+          </div>
+      </fieldset>
+
+      <!-- Submit Button (keep the existing one) -->
+      <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-lg btn-primary mt-3 px-5 py-2 shadow-lg submit-btn">Candidater</button>
+      </div>
+
+      <!-- Styles for Submit Button -->
+      <style>
+          .submit-btn {
+              background-color: #FF7F50;
+              border: none;
+              font-weight: bold;
+              font-size: 18px;
+              transition: all 0.3s ease;
+          }
+          
+          .submit-btn:hover {
+              background-color:  #FF6347;
+              color: #fff;
+              transform: scale(1.05);
+              box-shadow: 0px 4px 15px rgba(0, 91, 187, 0.4);
+          }
+      </style>
+    </form>
+</div>
+{% endblock %}

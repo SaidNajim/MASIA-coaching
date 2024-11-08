@@ -57,10 +57,10 @@
               <i class="fa fa-heart" style="color:#CF0A0A;"></i> {% if e.avg_rating %}({{ e.avg_rating }}){% else %}Aucun avis{% endif %}
             </div>
           </div>
-          <div class="member-info">
-            <h4>{{ e.user.first_name }} {{ e.user.last_name }} {% if e.package != "Gratuit" %} <i class="ri-award-fill" style="color:#f79418;" data-toggle="tooltip" data-placement="top" title="{% if e.package %}Membre {{ e.package }}{% endif %}"></i> {% endif %}</h4>
-            <span>{% if e.tagline %}{{ e.tagline }}{% else %} Auto Entrepreneur {% endif %}</span>
-            <a href="#" class="btn btn-success" style="width:100%;">Consulter son profil</a>
+          <div class="member-info w-100">
+            <h4>{{ e.user.first_name }} {{ e.user.last_name }}</h4>
+            <span>{% if e.tagline %}{{ e.tagline }}{% else %} Coach Sportif {% endif %}</span>
+            <a href="{% url 'coach' e.id %}" class=" btn btn-info text-light" style="width:100%;"><b>Réserver une séance</b></a>
             {% comment %} <div class="social">
                 <div class="mr-3"><i class="ri-mail-send-line"></i> {{ e.rfq }} demandes de devis</div>
             </div>

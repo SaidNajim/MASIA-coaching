@@ -11,7 +11,8 @@
   <!-- Favicons -->
   <link href="{% static 'masia/assets/img/logo-simple.ico' %}" rel="icon">
   <link href="{% static 'masia/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css" rel="stylesheet">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -37,9 +38,9 @@
       
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#" >MASIA Magazine</a></li>
-          <li><a href="#" >Contact</a></li>
-          <li><a href="#" class="getstarted">Je coach</a></li>
+          <li><a href="https://masiaton.blogspot.com/" >MASIA Magazine</a></li>
+          <li><a href="mailto:contact@masia.com" >Contact</a></li>
+          <li><a href="{% url "candidater" %}" class="getstarted">Je coach</a></li>
         </ul>
         <i class="ri-menu-line mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
